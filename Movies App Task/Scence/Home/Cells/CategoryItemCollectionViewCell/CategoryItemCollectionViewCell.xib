@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CategoryItemCollectionViewCell" customModule="Movies_App_Task" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="59"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="59"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vDZ-vB-aXN">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="59"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hq8-Nh-d5K">
+                                <rect key="frame" x="10" y="10" width="323" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Hq8-Nh-d5K" firstAttribute="top" secondItem="vDZ-vB-aXN" secondAttribute="top" constant="10" id="00z-nR-lT2"/>
+                            <constraint firstItem="Hq8-Nh-d5K" firstAttribute="leading" secondItem="vDZ-vB-aXN" secondAttribute="leading" constant="10" id="Men-4c-Prv"/>
+                            <constraint firstItem="Hq8-Nh-d5K" firstAttribute="centerX" secondItem="vDZ-vB-aXN" secondAttribute="centerX" id="vJc-hb-w0S"/>
+                            <constraint firstItem="Hq8-Nh-d5K" firstAttribute="centerY" secondItem="vDZ-vB-aXN" secondAttribute="centerY" id="vtX-M8-Urr"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="vDZ-vB-aXN" secondAttribute="trailing" id="R78-ds-gZJ"/>
+                <constraint firstItem="vDZ-vB-aXN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="gmm-Qf-fPh"/>
+                <constraint firstItem="vDZ-vB-aXN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="uHz-8f-N8U"/>
+                <constraint firstAttribute="bottom" secondItem="vDZ-vB-aXN" secondAttribute="bottom" id="xXe-lm-mDq"/>
+            </constraints>
+            <size key="customSize" width="343" height="59"/>
+            <connections>
+                <outlet property="titleLabel" destination="Hq8-Nh-d5K" id="Ad8-3J-1LE"/>
+            </connections>
+            <point key="canvasLocation" x="-154.96183206106869" y="-158.80281690140845"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

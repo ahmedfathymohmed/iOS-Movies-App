@@ -6,27 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXContainerItemProxy section */
-		75B9E1E62EF5A011002AFD7C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75B9E1C72EF5A00E002AFD7C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 75B9E1CE2EF5A00E002AFD7C;
-			remoteInfo = "Movies App Task";
-		};
-		75B9E1F02EF5A011002AFD7C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 75B9E1C72EF5A00E002AFD7C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 75B9E1CE2EF5A00E002AFD7C;
-			remoteInfo = "Movies App Task";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		75B9E1CF2EF5A00E002AFD7C /* Movies App Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movies App Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		75B9E1E52EF5A011002AFD7C /* Movies App TaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Movies App TaskTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		75B9E1EF2EF5A011002AFD7C /* Movies App TaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Movies App TaskUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -48,34 +29,10 @@
 			path = "Movies App Task";
 			sourceTree = "<group>";
 		};
-		75B9E1E82EF5A011002AFD7C /* Movies App TaskTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Movies App TaskTests";
-			sourceTree = "<group>";
-		};
-		75B9E1F22EF5A011002AFD7C /* Movies App TaskUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Movies App TaskUITests";
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		75B9E1CC2EF5A00E002AFD7C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		75B9E1E22EF5A011002AFD7C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		75B9E1EC2EF5A011002AFD7C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -89,8 +46,6 @@
 			isa = PBXGroup;
 			children = (
 				75B9E1D12EF5A00E002AFD7C /* Movies App Task */,
-				75B9E1E82EF5A011002AFD7C /* Movies App TaskTests */,
-				75B9E1F22EF5A011002AFD7C /* Movies App TaskUITests */,
 				75B9E1D02EF5A00E002AFD7C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,8 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				75B9E1CF2EF5A00E002AFD7C /* Movies App Task.app */,
-				75B9E1E52EF5A011002AFD7C /* Movies App TaskTests.xctest */,
-				75B9E1EF2EF5A011002AFD7C /* Movies App TaskUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,52 +83,6 @@
 			productReference = 75B9E1CF2EF5A00E002AFD7C /* Movies App Task.app */;
 			productType = "com.apple.product-type.application";
 		};
-		75B9E1E42EF5A011002AFD7C /* Movies App TaskTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 75B9E1FD2EF5A011002AFD7C /* Build configuration list for PBXNativeTarget "Movies App TaskTests" */;
-			buildPhases = (
-				75B9E1E12EF5A011002AFD7C /* Sources */,
-				75B9E1E22EF5A011002AFD7C /* Frameworks */,
-				75B9E1E32EF5A011002AFD7C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				75B9E1E72EF5A011002AFD7C /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				75B9E1E82EF5A011002AFD7C /* Movies App TaskTests */,
-			);
-			name = "Movies App TaskTests";
-			packageProductDependencies = (
-			);
-			productName = "Movies App TaskTests";
-			productReference = 75B9E1E52EF5A011002AFD7C /* Movies App TaskTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		75B9E1EE2EF5A011002AFD7C /* Movies App TaskUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 75B9E2002EF5A011002AFD7C /* Build configuration list for PBXNativeTarget "Movies App TaskUITests" */;
-			buildPhases = (
-				75B9E1EB2EF5A011002AFD7C /* Sources */,
-				75B9E1EC2EF5A011002AFD7C /* Frameworks */,
-				75B9E1ED2EF5A011002AFD7C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				75B9E1F12EF5A011002AFD7C /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				75B9E1F22EF5A011002AFD7C /* Movies App TaskUITests */,
-			);
-			name = "Movies App TaskUITests";
-			packageProductDependencies = (
-			);
-			productName = "Movies App TaskUITests";
-			productReference = 75B9E1EF2EF5A011002AFD7C /* Movies App TaskUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -188,14 +95,6 @@
 				TargetAttributes = {
 					75B9E1CE2EF5A00E002AFD7C = {
 						CreatedOnToolsVersion = 16.4;
-					};
-					75B9E1E42EF5A011002AFD7C = {
-						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 75B9E1CE2EF5A00E002AFD7C;
-					};
-					75B9E1EE2EF5A011002AFD7C = {
-						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 75B9E1CE2EF5A00E002AFD7C;
 					};
 				};
 			};
@@ -214,28 +113,12 @@
 			projectRoot = "";
 			targets = (
 				75B9E1CE2EF5A00E002AFD7C /* Movies App Task */,
-				75B9E1E42EF5A011002AFD7C /* Movies App TaskTests */,
-				75B9E1EE2EF5A011002AFD7C /* Movies App TaskUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		75B9E1CD2EF5A00E002AFD7C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		75B9E1E32EF5A011002AFD7C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		75B9E1ED2EF5A011002AFD7C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -252,34 +135,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		75B9E1E12EF5A011002AFD7C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		75B9E1EB2EF5A011002AFD7C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		75B9E1E72EF5A011002AFD7C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 75B9E1CE2EF5A00E002AFD7C /* Movies App Task */;
-			targetProxy = 75B9E1E62EF5A011002AFD7C /* PBXContainerItemProxy */;
-		};
-		75B9E1F12EF5A011002AFD7C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 75B9E1CE2EF5A00E002AFD7C /* Movies App Task */;
-			targetProxy = 75B9E1F02EF5A011002AFD7C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		75B9E1F92EF5A011002AFD7C /* Debug */ = {
@@ -293,8 +149,8 @@
 				INFOPLIST_FILE = "Movies App Task/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -319,8 +175,8 @@
 				INFOPLIST_FILE = "Movies App Task/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -453,74 +309,6 @@
 			};
 			name = Release;
 		};
-		75B9E1FE2EF5A011002AFD7C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Jahez.Movies-App-TaskTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Movies App Task.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Movies App Task";
-			};
-			name = Debug;
-		};
-		75B9E1FF2EF5A011002AFD7C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Jahez.Movies-App-TaskTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Movies App Task.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Movies App Task";
-			};
-			name = Release;
-		};
-		75B9E2012EF5A011002AFD7C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Jahez.Movies-App-TaskUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Movies App Task";
-			};
-			name = Debug;
-		};
-		75B9E2022EF5A011002AFD7C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Jahez.Movies-App-TaskUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Movies App Task";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -538,24 +326,6 @@
 			buildConfigurations = (
 				75B9E1F92EF5A011002AFD7C /* Debug */,
 				75B9E1FA2EF5A011002AFD7C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		75B9E1FD2EF5A011002AFD7C /* Build configuration list for PBXNativeTarget "Movies App TaskTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				75B9E1FE2EF5A011002AFD7C /* Debug */,
-				75B9E1FF2EF5A011002AFD7C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		75B9E2002EF5A011002AFD7C /* Build configuration list for PBXNativeTarget "Movies App TaskUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				75B9E2012EF5A011002AFD7C /* Debug */,
-				75B9E2022EF5A011002AFD7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
