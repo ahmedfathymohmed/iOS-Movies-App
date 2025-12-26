@@ -14,11 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var categoriesListCollectionView: UICollectionView!
     @IBOutlet weak var moviesListTableView: UITableView!
     
-    
-    //MARK: - Properties
-    let categoriesDataSource = ["Ayman", "Ahmed", "Islam", "Fathy", "Moahmed"]
-    
-    var moviesDataSource: [Movie] = []
+    let homeViewModel = HomeViewModel()
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -29,11 +25,12 @@ class HomeViewController: UIViewController {
         setupTableViewDelegate()
         setupCollectionViewLayout()
         categoriesListCollectionView.reloadData()
-        moviesListTableView.reloadData()
-        getMoviesList(callBack: { [weak self] model in
-            self?.moviesDataSource = model?.results ?? []
+        
+        homeViewModel.fetchMovies()
+        
+        homeViewModel.fetchCallBack = { [weak self] in 
             self?.moviesListTableView.reloadData()
-        } )
+        }
     }
     
     func registerCollectionViewCell() {
@@ -63,14 +60,9 @@ class HomeViewController: UIViewController {
     }
 }
 
-
-
-
-
-
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoriesDataSource.count
+        return homeViewModel.getCategoriesCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -80,22 +72,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let categoryCell = cell as? CategoryItemCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
-        categoryCell.setupCell(with: categoriesDataSource[indexPath.row])
+        let categoryItem = homeViewModel.getCategory(at: indexPath.row)
+        categoryCell.setupCell(with: categoryItem)
         return categoryCell
     }
 }
 
-
-
-
-
-
-
-
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return moviesDataSource.count
+        return homeViewModel.getMovieCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -106,57 +91,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let movie = moviesDataSource[indexPath.row]
+        let movie = homeViewModel.getMovie(at: indexPath.row)
         
         moviesCell.setUpCell(with: movie)
         
         return moviesCell
-    }
-}
-
-
-
-
-
-
-extension HomeViewController {
-    
-    func getMoviesList( callBack: @escaping (MoviesResponse?) -> Void) {
-        
-        
-        let token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYzQxZjZkYzcxNjhkNWFiMjE2NGVkOWQxNmNmZTI4NiIsIm5iZiI6MTQ1MzkyNzM5MC40NjUsInN1YiI6IjU2YTkyYmRlYzNhMzY4NzJkMzAwMTc2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Ecy-T7m8SWpthLlxrtJ8UZswr-hWcfnnF9ykD5WjKCY"
-        
-        // 1- Prepare URL
-        let url = URL(string: "https://api.themoviedb.org/3/discover/movie")
-        
-        // 2- get URL Request
-        var urlRequest = URLRequest(url: url!)
-        
-        urlRequest.httpMethod = "GET"
-        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        
-        // 3- prepare the session
-        let session = URLSession.shared
-        // create Data Task
-        let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
-            print(response)
-            
-            if let error = error {
-                print("\(error)")
-            } else {
-                
-                let decoder = JSONDecoder()
-                do {
-                    let model = try decoder.decode(MoviesResponse.self, from: data!)
-                    DispatchQueue.main.async {
-                        callBack(model)
-                    }
-                } catch let decodeError {
-                    print(decodeError)
-                }
-            }
-        
-        }
-        dataTask.resume()
     }
 }
