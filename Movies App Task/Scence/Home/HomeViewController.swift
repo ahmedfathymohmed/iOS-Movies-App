@@ -9,7 +9,6 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    
     // MARK: - OutLets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var categoriesListCollectionView: UICollectionView!
@@ -19,13 +18,7 @@ class HomeViewController: UIViewController {
     //MARK: - Properties
     let categoriesDataSource = ["Ayman", "Ahmed", "Islam", "Fathy", "Moahmed"]
     
-    let moviesDataSource: [MovieItem] = [
-        MovieItem(movieImage: "", movieName: "Movie1", movieYear: "2025"),
-        MovieItem(movieImage: "", movieName: "Movie2", movieYear: "2025"),
-        MovieItem(movieImage: "", movieName: "Movie3", movieYear: "2025"),
-        MovieItem(movieImage: "", movieName: "Movie4", movieYear: "2025"),
-        MovieItem(movieImage: "", movieName: "Movie5", movieYear: "2025")
-    ]
+    var moviesDataSource: [Movie] = []
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -37,6 +30,10 @@ class HomeViewController: UIViewController {
         setupCollectionViewLayout()
         categoriesListCollectionView.reloadData()
         moviesListTableView.reloadData()
+        getMoviesList(callBack: { [weak self] model in
+            self?.moviesDataSource = model?.results ?? []
+            self?.moviesListTableView.reloadData()
+        } )
     }
     
     func registerCollectionViewCell() {
@@ -66,6 +63,11 @@ class HomeViewController: UIViewController {
     }
 }
 
+
+
+
+
+
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoriesDataSource.count
@@ -83,6 +85,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return categoryCell
     }
 }
+
+
+
+
+
+
+
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -105,8 +114,49 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-struct MovieItem {
-    let movieImage: String
-    let movieName: String
-    let movieYear: String
+
+
+
+
+
+extension HomeViewController {
+    
+    func getMoviesList( callBack: @escaping (MoviesResponse?) -> Void) {
+        
+        
+        let token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYzQxZjZkYzcxNjhkNWFiMjE2NGVkOWQxNmNmZTI4NiIsIm5iZiI6MTQ1MzkyNzM5MC40NjUsInN1YiI6IjU2YTkyYmRlYzNhMzY4NzJkMzAwMTc2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Ecy-T7m8SWpthLlxrtJ8UZswr-hWcfnnF9ykD5WjKCY"
+        
+        // 1- Prepare URL
+        let url = URL(string: "https://api.themoviedb.org/3/discover/movie")
+        
+        // 2- get URL Request
+        var urlRequest = URLRequest(url: url!)
+        
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        // 3- prepare the session
+        let session = URLSession.shared
+        // create Data Task
+        let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
+            print(response)
+            
+            if let error = error {
+                print("\(error)")
+            } else {
+                
+                let decoder = JSONDecoder()
+                do {
+                    let model = try decoder.decode(MoviesResponse.self, from: data!)
+                    DispatchQueue.main.async {
+                        callBack(model)
+                    }
+                } catch let decodeError {
+                    print(decodeError)
+                }
+            }
+        
+        }
+        dataTask.resume()
+    }
 }

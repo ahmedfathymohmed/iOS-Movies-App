@@ -17,9 +17,9 @@ class MovieItemTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func setUpCell(with movie: MovieItem) {
-        movieNameLabel.text = movie.movieName
-        movieYearLabel.text = movie.movieYear
-        movieImageView.image = UIImage(named: movie.movieImage)
+    func setUpCell(with movie: Movie) {
+        movieNameLabel.text = movie.title
+        movieYearLabel.text = movie.releaseDate
+//        movieImageView.image = UIImage(named: movie.movieImage)
     }
 }
