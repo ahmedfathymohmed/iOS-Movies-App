@@ -44,7 +44,7 @@ class HomeViewController: UIViewController , UICollectionViewDelegateFlowLayout{
         super.viewDidLoad()
         titleLabel.text = "Watch New Movies"
         titleLabel.textColor = .yellow
-        titleLabel.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         registerCollectionViewCells()
         setupCollectionViewDelegates()
         setupMoviesCollectionViewLayout()

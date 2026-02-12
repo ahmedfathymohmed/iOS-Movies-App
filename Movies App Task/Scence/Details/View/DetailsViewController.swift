@@ -13,10 +13,6 @@ class DetailsViewController: UIViewController {
     weak var coordinator: AppCoordinator?
     private var cancellables = Set<AnyCancellable>()
     
-    
-    @IBOutlet weak var searchBar: UISearchBar!
-    
-    
     @IBOutlet weak var contanierView: UIView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
