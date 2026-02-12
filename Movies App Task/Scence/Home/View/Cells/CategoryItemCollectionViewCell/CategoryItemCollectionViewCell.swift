@@ -33,11 +33,10 @@ class CategoryItemCollectionViewCell: UICollectionViewCell {
         contanierView.layer.borderWidth = 1.0
         contanierView.backgroundColor = .black
         
-        titleLabel.font = .systemFont(ofSize: 12, weight: .medium)
+        titleLabel.font = .systemFont(ofSize: 14, weight: .medium)
         contanierView.layer.cornerRadius = 14
 
         titleLabel.textColor = .white
-        titleLabel.numberOfLines = 1
         titleLabel.textAlignment = .center
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.minimumScaleFactor = 0.7

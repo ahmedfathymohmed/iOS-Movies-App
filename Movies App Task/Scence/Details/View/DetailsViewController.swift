@@ -33,13 +33,27 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var statusLabelValue: UILabel!
     @IBOutlet weak var runtimeLabelValue: UILabel!
     @IBOutlet weak var revenueLabelValue: UILabel!
+    @IBOutlet weak var backImageView: UIImageView!
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            navigationController?.setNavigationBarHidden(true, animated: false)
+        }
+
+        override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            navigationController?.setNavigationBarHidden(false, animated: false)
+        }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
-        
+
         viewModel?.fetchMoviesDetails()
+        
+        backImageView.image = UIImage(named: "back_1")
+        backImageView.tintColor = .white
+
     }
     private func updateUI(with movie: DetailResponse) {
         setupStaticUI()
@@ -60,7 +74,7 @@ class DetailsViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { error in
                 if let error = error {
-                    print("❌ Error: \(error)")
+                    print(" Error: \(error)")
                 }
             }
             .store(in: &cancellables)
@@ -148,5 +162,9 @@ class DetailsViewController: UIViewController {
     private func updateImages(_ image: UIImage?) {
         selectedMovieImage.image = image
         selectedMovieSmallImge.image = image
+    }
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        coordinator?.goBack()
     }
 }

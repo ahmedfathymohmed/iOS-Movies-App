@@ -10,13 +10,13 @@ import Combine
 
 class DetailsViewModel {
     
+    // MARK: - Properties
     private let movieId: Int
-    
     private var cancellables = Set<AnyCancellable>()
-    @Published var errorMessage: String?
-    @Published var detailResponse : DetailResponse?
     
-    
+    @Published private(set) var detailResponse: DetailResponse?
+    @Published private(set) var errorMessage: String?
+
     init(movieId: Int) {
         self.movieId = movieId
     }
@@ -24,7 +24,6 @@ class DetailsViewModel {
     func fetchMoviesDetails() {
         let endpoint = MovieEndpoint.details(id: movieId)
         guard let request = APIBuilder.buildRequest(endpoint: endpoint) else { return }
-        print("🔗 Fetching URL: \(request.url?.absoluteString ?? "No URL")")
         
         NetworkManager.shared.request(url: request)
             .sink { completion in
@@ -32,8 +31,6 @@ class DetailsViewModel {
                     self.errorMessage = error.localizedDescription
                 }
             } receiveValue: { [weak self] (response: DetailResponse) in
-                print("✅ Movie received: \(response.title ?? "No title")")
-
                 self?.detailResponse = response
             }
             .store(in: &cancellables)

@@ -20,12 +20,11 @@ class AppCoordinator {
     func start() {
         showMain()
     }
-    private func showMain() {
+    func showMain() {
         let vc = HomeViewController()
         vc.coordinator = self
         navigationController.setViewControllers([vc], animated: false)
     }
-    
     func goToDetails(movieId: Int) {
         print("Navigating with movie ID: \(movieId)")
         let vc = DetailsViewController()
@@ -33,9 +32,10 @@ class AppCoordinator {
         
         vc.viewModel = vm
         vc.coordinator = self
-        
         navigationController.pushViewController(vc, animated: true)
+    }
+    func goBack() {
+        navigationController.popViewController(animated: true)
     }
     
 }
-

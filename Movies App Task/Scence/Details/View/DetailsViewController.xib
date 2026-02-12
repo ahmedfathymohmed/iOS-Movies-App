@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsViewController" customModule="Movies_App_Task" customModuleProvider="target">
             <connections>
+                <outlet property="backImageView" destination="np7-ky-qLf" id="SMf-ir-aJr"/>
                 <outlet property="budgetLabel" destination="aer-sd-XFu" id="sLg-NA-RfD"/>
                 <outlet property="budgetLabelValue" destination="4qE-Tj-Qro" id="61Z-BA-g1X"/>
                 <outlet property="contanierView" destination="2JH-jg-wTv" id="0jz-LL-19H"/>
@@ -174,6 +175,22 @@
                                 <constraint firstItem="cXD-ud-P9f" firstAttribute="leading" secondItem="oTq-Us-awC" secondAttribute="leading" constant="84.000000000000028" id="DpY-TC-0Tx"/>
                             </constraints>
                         </stackView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="np7-ky-qLf">
+                            <rect key="frame" x="20" y="60" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="Cw1-by-Szj"/>
+                                <constraint firstAttribute="height" constant="20" id="ych-DN-5cs"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJ9-hi-LMb">
+                            <rect key="frame" x="20" y="60" width="20" height="20"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain"/>
+                            <connections>
+                                <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="7qH-ZN-hbY"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -181,17 +198,23 @@
                         <constraint firstItem="bFE-5i-jpA" firstAttribute="top" secondItem="2JH-jg-wTv" secondAttribute="top" constant="100" id="4G1-0M-OCS"/>
                         <constraint firstAttribute="trailing" secondItem="oTq-Us-awC" secondAttribute="trailing" constant="20" id="BBv-4O-yDL"/>
                         <constraint firstItem="bFE-5i-jpA" firstAttribute="leading" secondItem="2JH-jg-wTv" secondAttribute="leading" id="Bei-Ok-KWM"/>
+                        <constraint firstItem="np7-ky-qLf" firstAttribute="trailing" secondItem="MJ9-hi-LMb" secondAttribute="trailing" id="H7w-cs-2UK"/>
                         <constraint firstItem="vhW-bl-Mlr" firstAttribute="leading" secondItem="2JH-jg-wTv" secondAttribute="leading" constant="10" id="HfG-Oq-r66"/>
                         <constraint firstItem="Eb4-ke-zDN" firstAttribute="leading" secondItem="2JH-jg-wTv" secondAttribute="leading" constant="10" id="HlF-Wg-Wfq"/>
                         <constraint firstItem="L6u-MM-tlp" firstAttribute="leading" secondItem="2JH-jg-wTv" secondAttribute="leading" constant="10" id="JTt-GQ-TPs"/>
                         <constraint firstItem="Eb4-ke-zDN" firstAttribute="top" relation="lessThanOrEqual" secondItem="vhW-bl-Mlr" secondAttribute="bottom" constant="50" id="JnJ-q3-PMQ"/>
                         <constraint firstItem="eNr-D5-7jX" firstAttribute="leading" secondItem="qfq-Rp-sZa" secondAttribute="leading" id="KBW-XG-QMf"/>
+                        <constraint firstItem="np7-ky-qLf" firstAttribute="leading" secondItem="2JH-jg-wTv" secondAttribute="leading" constant="20" id="LTW-pC-eQ6"/>
+                        <constraint firstItem="np7-ky-qLf" firstAttribute="top" secondItem="2JH-jg-wTv" secondAttribute="top" constant="60" id="PCo-mu-gkt"/>
                         <constraint firstAttribute="trailing" secondItem="bFE-5i-jpA" secondAttribute="trailing" id="V6z-1l-idM"/>
                         <constraint firstItem="qfq-Rp-sZa" firstAttribute="top" secondItem="bFE-5i-jpA" secondAttribute="bottom" constant="20" id="YUI-Eq-hvV"/>
                         <constraint firstItem="eNr-D5-7jX" firstAttribute="top" secondItem="qfq-Rp-sZa" secondAttribute="bottom" constant="10" id="Yog-B0-eft"/>
                         <constraint firstItem="vhW-bl-Mlr" firstAttribute="top" secondItem="L6u-MM-tlp" secondAttribute="bottom" constant="10" id="gAr-2R-B3i"/>
+                        <constraint firstItem="np7-ky-qLf" firstAttribute="bottom" secondItem="MJ9-hi-LMb" secondAttribute="bottom" id="gcj-XN-fWX"/>
+                        <constraint firstItem="MJ9-hi-LMb" firstAttribute="top" secondItem="2JH-jg-wTv" secondAttribute="top" constant="60" id="hZE-ip-90y"/>
                         <constraint firstItem="eNr-D5-7jX" firstAttribute="trailing" secondItem="qfq-Rp-sZa" secondAttribute="trailing" id="ikV-y9-SLi"/>
                         <constraint firstAttribute="trailing" secondItem="vhW-bl-Mlr" secondAttribute="trailing" constant="20" id="kDA-Ta-7qL"/>
+                        <constraint firstItem="MJ9-hi-LMb" firstAttribute="leading" secondItem="2JH-jg-wTv" secondAttribute="leading" constant="20" id="oI2-um-YEe"/>
                         <constraint firstItem="oTq-Us-awC" firstAttribute="bottom" secondItem="Eb4-ke-zDN" secondAttribute="bottom" id="pXW-ek-59I"/>
                         <constraint firstItem="L6u-MM-tlp" firstAttribute="top" secondItem="bFE-5i-jpA" secondAttribute="bottom" constant="10" id="sYV-oW-hjz"/>
                         <constraint firstAttribute="bottom" secondItem="Eb4-ke-zDN" secondAttribute="bottom" constant="50" id="tKe-Gd-QeQ"/>
