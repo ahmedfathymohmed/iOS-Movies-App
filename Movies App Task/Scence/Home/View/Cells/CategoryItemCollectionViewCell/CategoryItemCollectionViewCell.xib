@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,26 +17,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="343" height="59"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vDZ-vB-aXN">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vDZ-vB-aXN" userLabel="contanierView">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="59"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hq8-Nh-d5K">
-                                <rect key="frame" x="10" y="10" width="323" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hq8-Nh-d5K">
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="59"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                         <constraints>
-                            <constraint firstItem="Hq8-Nh-d5K" firstAttribute="top" secondItem="vDZ-vB-aXN" secondAttribute="top" constant="10" id="00z-nR-lT2"/>
-                            <constraint firstItem="Hq8-Nh-d5K" firstAttribute="leading" secondItem="vDZ-vB-aXN" secondAttribute="leading" constant="10" id="Men-4c-Prv"/>
-                            <constraint firstItem="Hq8-Nh-d5K" firstAttribute="centerX" secondItem="vDZ-vB-aXN" secondAttribute="centerX" id="vJc-hb-w0S"/>
-                            <constraint firstItem="Hq8-Nh-d5K" firstAttribute="centerY" secondItem="vDZ-vB-aXN" secondAttribute="centerY" id="vtX-M8-Urr"/>
+                            <constraint firstAttribute="bottom" secondItem="Hq8-Nh-d5K" secondAttribute="bottom" id="7Op-V3-WnT"/>
+                            <constraint firstItem="Hq8-Nh-d5K" firstAttribute="leading" secondItem="vDZ-vB-aXN" secondAttribute="leading" id="Men-4c-Prv"/>
+                            <constraint firstItem="Hq8-Nh-d5K" firstAttribute="top" secondItem="vDZ-vB-aXN" secondAttribute="top" id="fTF-z2-jGo"/>
+                            <constraint firstAttribute="trailing" secondItem="Hq8-Nh-d5K" secondAttribute="trailing" id="kSR-ZH-sRB"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="vDZ-vB-aXN" secondAttribute="trailing" id="R78-ds-gZJ"/>
                 <constraint firstItem="vDZ-vB-aXN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="gmm-Qf-fPh"/>
@@ -44,14 +46,15 @@
             </constraints>
             <size key="customSize" width="343" height="59"/>
             <connections>
+                <outlet property="contanierView" destination="vDZ-vB-aXN" id="Vw1-aB-xk4"/>
                 <outlet property="titleLabel" destination="Hq8-Nh-d5K" id="Ad8-3J-1LE"/>
             </connections>
             <point key="canvasLocation" x="-154.96183206106869" y="-158.80281690140845"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

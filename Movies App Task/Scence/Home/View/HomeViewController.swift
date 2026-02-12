@@ -2,99 +2,160 @@
 //  HomeViewController.swift
 //  Movies App Task
 //
-//  Created by Ayman Fathy on 19/12/2025.
+//  Created by Ahmed Fathy on 19/12/2025.
 //
 
 import UIKit
+import Combine
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController , UICollectionViewDelegateFlowLayout{
     
-    // MARK: - OutLets
+    private var cancellables = Set<AnyCancellable>()
+    private let ViewModel = HomeViewModel()
+    weak var coordinator: AppCoordinator?
+    private var movies: [Movie] = []
+    
+    // MARK: - Outlets
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var categoriesListCollectionView: UICollectionView!
-    @IBOutlet weak var moviesListTableView: UITableView!
+    @IBOutlet weak var moviesCollectionView: UICollectionView!
     
-    let homeViewModel = HomeViewModel()
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if collectionView == categoriesListCollectionView {
+            return CGSize(width: 100, height: 25)
+        }
+        
+        let spacing: CGFloat = 3
+        let numberOfItemsPerRow: CGFloat = 2
+        let totalSpacing = spacing * (numberOfItemsPerRow + 1)
+        
+        let width = (collectionView.frame.width - totalSpacing) / numberOfItemsPerRow
+        let height = width * 1.5
+        
+        return CGSize(width: width, height: height)
+    }
     
-    //MARK: - Life Cycle
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerCollectionViewCell()
-        registerTableViewCell()
-        setupCollectionViewDelegate()
-        setupTableViewDelegate()
-        setupCollectionViewLayout()
-        categoriesListCollectionView.reloadData()
+        titleLabel.text = "Watch New Movies"
+        titleLabel.textColor = .yellow
+        titleLabel.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        registerCollectionViewCells()
+        setupCollectionViewDelegates()
+        setupMoviesCollectionViewLayout()
+        bindViewModel()
+        ViewModel.fetchMovies(endpoint: .popular)
         
-        homeViewModel.fetchMovies()
-        
-        homeViewModel.fetchCallBack = { [weak self] in 
-            self?.moviesListTableView.reloadData()
+    }
+    
+    private func setupMoviesCollectionViewLayout() {
+        if let layout = moviesCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.minimumInteritemSpacing = 3
+            layout.minimumLineSpacing = 10
+            layout.sectionInset = .zero
         }
     }
-    
-    func registerCollectionViewCell() {
-        categoriesListCollectionView.register(UINib(nibName: "CategoryItemCollectionViewCell", bundle: .main),
-                                              forCellWithReuseIdentifier: "CategoryItemCollectionViewCell")
+    // MARK: - Setup Methods
+    private func registerCollectionViewCells() {
+        categoriesListCollectionView.register(
+            UINib(nibName: "CategoryItemCollectionViewCell", bundle: .main),
+            forCellWithReuseIdentifier: "CategoryItemCollectionViewCell"
+        )
+        
+        moviesCollectionView.register(
+            UINib(nibName: "MoviesCollectionView", bundle: .main),
+            forCellWithReuseIdentifier: "MoviesCollectionView"
+        )
     }
     
-    func registerTableViewCell() {
-        moviesListTableView.register(UINib(nibName: "MovieItemTableViewCell", bundle: .main),
-                                     forCellReuseIdentifier: "MovieItemTableViewCell")
-    }
-    
-    func setupCollectionViewDelegate() {
+    private func setupCollectionViewDelegates() {
         categoriesListCollectionView.delegate = self
         categoriesListCollectionView.dataSource = self
+        
+        moviesCollectionView.delegate = self
+        moviesCollectionView.dataSource = self
     }
-    
-    func setupTableViewDelegate() {
-        moviesListTableView.delegate = self
-        moviesListTableView.dataSource = self
+    private func bindViewModel() {
+        ViewModel.$movies
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] moviesList in
+                self?.movies = moviesList
+                self?.moviesCollectionView.reloadData()
+            }
+            .store(in: &cancellables)
+        
+        ViewModel.$errorMessage
+            .receive(on: DispatchQueue.main)
+            .sink { error in
+                if let error = error {
+                    print("Error: \(error)")
+                }
+            }
+            .store(in: &cancellables)
     }
+}
+extension HomeViewController: UISearchBarDelegate {
     
-    func setupCollectionViewLayout() {
-        if let layout = categoriesListCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-        }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        ViewModel.filterMovies(text: searchText)
+        moviesCollectionView.reloadData()
     }
 }
 
+// MARK: - UICollectionView Delegate & DataSource
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if collectionView == categoriesListCollectionView {
+            let selectedCategory = ViewModel.getCategory(at: indexPath.row)
+            ViewModel.fetchMovies(for: selectedCategory)
+        }
+        
+        if collectionView == moviesCollectionView {
+            let selectedMovie = ViewModel.getMovie(at: indexPath.row)
+            coordinator?.goToDetails(movieId: selectedMovie.id)
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return homeViewModel.getCategoriesCount()
+        switch collectionView {
+        case categoriesListCollectionView:
+            return ViewModel.getCategoriesCount()
+        case moviesCollectionView:
+            return ViewModel.getMovieCount()
+        default:
+            return 0
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryItemCollectionViewCell", for: indexPath)
-        
-        guard let categoryCell = cell as? CategoryItemCollectionViewCell else {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch collectionView {
+        case categoriesListCollectionView:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "CategoryItemCollectionViewCell",
+                for: indexPath
+            ) as! CategoryItemCollectionViewCell
+            cell.setupCell(with: ViewModel.getCategory(at: indexPath.row))
+            return cell
+            
+        case moviesCollectionView:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "MoviesCollectionView",
+                for: indexPath
+            ) as! MoviesCollectionView
+            cell.setUpMoiveCell(with: ViewModel.getMovie(at: indexPath.row))
+            return cell
+            
+        default:
             return UICollectionViewCell()
         }
-        let categoryItem = homeViewModel.getCategory(at: indexPath.row)
-        categoryCell.setupCell(with: categoryItem)
-        return categoryCell
     }
 }
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return homeViewModel.getMovieCount()
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieItemTableViewCell", for: indexPath)
-        
-        guard let moviesCell = cell as? MovieItemTableViewCell else {
-            return UITableViewCell()
-        }
-        
-        let movie = homeViewModel.getMovie(at: indexPath.row)
-        
-        moviesCell.setUpCell(with: movie)
-        
-        return moviesCell
-    }
-}
+
+

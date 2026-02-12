@@ -2,7 +2,7 @@
 //  MovieItem.swift
 //  Movies App Task
 //
-//  Created by Ayman Fathy on 21/12/2025.
+//  Created by Ahmed Fathy on 21/12/2025.
 //
 
 import Foundation
